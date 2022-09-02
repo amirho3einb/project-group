@@ -1,25 +1,20 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import "./App.css";
-import HomePage from "./Pages/Homepage";
-import Login from "./Pages/Login";
-import { RecoilRoot } from "recoil";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Route, Routes } from "react-router-dom";
+
+import HomePage from "@pages/Homepage";
+import Login from "@pages/Login";
 
 const queryClient = new QueryClient();
 
-function App() {
+const App = () => {
   return (
-    <BrowserRouter>
-      <RecoilRoot>
-        <QueryClientProvider client={queryClient}>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/login" element={<Login />} />
-          </Routes>
-        </QueryClientProvider>
-      </RecoilRoot>
-    </BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </QueryClientProvider>
   );
-}
+};
 
 export default App;
