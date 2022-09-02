@@ -4,6 +4,7 @@ import LoadingButton from "@mui/lab/LoadingButton";
 import axios from "axios";
 import { useSetRecoilState } from "recoil";
 import { authorizationState } from "../../Recoil/Atom";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   interface IUserAuth {
@@ -55,6 +56,8 @@ const Login = () => {
         <LoadingButton loading={false} variant="outlined" type="submit">
           Submit
         </LoadingButton>
+
+        <Link to="/">home</Link>
       </Box>
     </Box>
   );
