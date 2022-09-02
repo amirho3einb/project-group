@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "server": "hai-server --watch db.json --auth auth.json --port 3000",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
