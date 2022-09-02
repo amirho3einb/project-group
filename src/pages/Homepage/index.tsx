@@ -3,11 +3,12 @@ import axios from "axios";
 import { useRecoilValue } from "recoil";
 
 import { authorizationState } from "@recoil/Atom";
+import { ReactNode } from "react";
 
 const HomePage = () => {
   const auth = useRecoilValue(authorizationState);
 
-  const { data, isLoading, isError, error } = useQuery<any, any>(["comments"], async () => {
+  const { data, isLoading, isError, error } = useQuery(["comments"], async () => {
     const { data } = await axios.get("http://localhost:3000/comments", {
       headers: { Authorization: `Bearer ${auth.access_token}` },
     });
@@ -16,7 +17,7 @@ const HomePage = () => {
   });
 
   if (isLoading) return <p>loading ...</p>;
-  if (isError) return <p>{error}</p>;
+  if (isError) return <p>{error as ReactNode}</p>;
 
   return (
     <div>
